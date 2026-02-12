@@ -1,0 +1,712 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Inter font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* Light Mode Variables */
+:root {
+  /* Primary Colors */
+  --primary-blue: #3B82F6;
+  --primary-blue-dark: #2563EB;
+  --primary-blue-light: #DBEAFE;
+
+  /* Accent Colors */
+  --accent-green: #10B981;
+  --accent-orange: #F59E0B;
+  --accent-red: #EF4444;
+  --accent-purple: #8B5CF6;
+
+  /* Neutral Colors */
+  --white: #FFFFFF;
+  --gray-50: #F9FAFB;
+  --gray-100: #F3F4F6;
+  --gray-200: #E5E7EB;
+  --gray-300: #D1D5DB;
+  --gray-400: #9CA3AF;
+  --gray-500: #6B7280;
+  --gray-600: #4B5563;
+  --gray-700: #374151;
+  --gray-900: #111827;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+}
+
+/* Dark Mode Variables */
+.dark {
+  --primary-blue: #60A5FA;
+  --primary-blue-dark: #3B82F6;
+  --primary-blue-light: #1E3A8A;
+
+  --accent-green: #34D399;
+  --accent-orange: #FBBF24;
+  --accent-red: #F87171;
+  --accent-purple: #A78BFA;
+
+  --dark-bg: #0F172A;
+  --dark-surface: #1E293B;
+  --dark-surface-hover: #334155;
+  --dark-border: #334155;
+  --dark-text-primary: #F1F5F9;
+  --dark-text-secondary: #94A3B8;
+  --dark-text-muted: #64748B;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Base Styles */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: var(--gray-900);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dark body {
+  color: var(--dark-text-primary);
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animated-gradient {
+  background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes checkboxPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+.animate-fadeIn { animation: fadeIn 0.5s ease-out; }
+.animate-slideInRight { animation: slideInRight 0.5s ease-out; }
+.float-animation { animation: float 3s ease-in-out infinite; }
+.shimmer {
+  background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ============================================
+   BUTTON STYLES
+   ============================================ */
+
+.btn-primary {
+  @apply px-6 py-3 text-white rounded-lg font-semibold shadow-md hover:shadow-lg focus:outline-none focus:ring-4 transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0;
+  background-color: var(--primary-blue);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-blue-dark);
+}
+
+.btn-primary:focus {
+  --tw-ring-color: rgba(59, 130, 246, 0.3);
+}
+
+.dark .btn-primary {
+  background-color: #60A5FA;
+}
+
+.dark .btn-primary:hover {
+  background-color: var(--primary-blue);
+}
+
+.btn-secondary {
+  @apply px-6 py-3 bg-white text-gray-700 rounded-lg font-semibold shadow-sm hover:bg-gray-50 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-gray-300 transition-all duration-200 border-2 border-gray-200;
+}
+
+.dark .btn-secondary {
+  background-color: var(--dark-surface);
+  color: var(--dark-text-primary);
+  border-color: var(--dark-border);
+}
+
+.dark .btn-secondary:hover {
+  background-color: var(--dark-surface-hover);
+}
+
+.btn-danger {
+  @apply px-6 py-3 text-white rounded-lg font-semibold shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-red-300 transition-all duration-200;
+  background-color: var(--accent-red);
+}
+
+.btn-danger:hover {
+  background-color: #DC2626;
+}
+
+.btn-danger-alt {
+  @apply px-5 py-2.5 text-white rounded-lg font-medium shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-all duration-200;
+  background-color: var(--accent-red);
+}
+
+.btn-danger-alt:hover {
+  background-color: #DC2626;
+}
+
+.btn-icon {
+  @apply w-10 h-10 rounded-lg bg-transparent text-gray-600 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 transition-all duration-200 flex items-center justify-center;
+}
+
+.btn-icon:focus {
+  --tw-ring-color: rgba(59, 130, 246, 0.3);
+}
+
+.dark .btn-icon {
+  color: var(--dark-text-secondary);
+}
+
+.dark .btn-icon:hover {
+  background-color: var(--dark-surface-hover);
+  color: var(--dark-text-primary);
+}
+
+/* ============================================
+   FORM STYLES
+   ============================================ */
+
+.form-input {
+  @apply w-full px-4 py-3 border-2 border-gray-200 rounded-lg shadow-sm focus:outline-none focus:ring-4 transition-all duration-200 bg-white text-gray-900 placeholder-gray-400;
+}
+
+.form-input:focus {
+  border-color: var(--primary-blue);
+  --tw-ring-color: rgba(59, 130, 246, 0.1);
+}
+
+.dark .form-input {
+  background-color: var(--dark-surface);
+  border-color: var(--dark-border);
+  color: var(--dark-text-primary);
+}
+
+.dark .form-input::placeholder {
+  color: var(--dark-text-muted);
+}
+
+.dark .form-input:focus {
+  border-color: #60A5FA;
+  --tw-ring-color: rgba(96, 165, 250, 0.1);
+}
+
+.form-input:disabled {
+  @apply bg-gray-100 cursor-not-allowed opacity-60;
+}
+
+.form-textarea {
+  @apply w-full px-4 py-3 border-2 border-gray-200 rounded-lg shadow-sm focus:outline-none focus:ring-4 transition-all duration-200 bg-white text-gray-900 placeholder-gray-400 resize-y min-h-[120px];
+}
+
+.form-textarea:focus {
+  border-color: var(--primary-blue);
+  --tw-ring-color: rgba(59, 130, 246, 0.1);
+}
+
+.dark .form-textarea {
+  background-color: var(--dark-surface);
+  border-color: var(--dark-border);
+  color: var(--dark-text-primary);
+}
+
+.dark .form-textarea::placeholder {
+  color: var(--dark-text-muted);
+}
+
+.dark .form-textarea:focus {
+  border-color: #60A5FA;
+  --tw-ring-color: rgba(96, 165, 250, 0.1);
+}
+
+.form-label {
+  @apply block text-sm font-semibold text-gray-700 mb-2;
+}
+
+.dark .form-label {
+  color: var(--dark-text-primary);
+}
+
+.form-error {
+  @apply text-sm mt-1;
+  color: var(--accent-red);
+}
+
+/* ============================================
+   CARD STYLES
+   ============================================ */
+
+.card {
+  @apply bg-white/95 backdrop-blur-lg rounded-xl shadow-lg border border-gray-200 p-6 transition-all duration-300;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.dark .card {
+  @apply bg-dark-surface border-dark-border shadow-dark-md;
+}
+
+.card:hover {
+  @apply shadow-xl transform -translate-y-1;
+}
+
+.dark .card:hover {
+  @apply shadow-dark-lg;
+}
+
+.task-card {
+  @apply bg-white rounded-xl shadow-md border border-gray-200 p-5 transition-all duration-300;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.dark .task-card {
+  @apply bg-dark-surface border-dark-border shadow-dark-md;
+}
+
+.task-card:hover {
+  @apply shadow-lg transform -translate-y-2 border-primary-500;
+}
+
+.dark .task-card:hover {
+  @apply border-primary-400 shadow-dark-lg;
+}
+
+.task-completed {
+  @apply opacity-70;
+}
+
+.task-completed h3,
+.task-completed h2,
+.task-completed p {
+  @apply line-through text-gray-400;
+}
+
+.dark .task-completed h3,
+.dark .task-completed h2,
+.dark .task-completed p {
+  @apply text-dark-text-muted;
+}
+
+/* ============================================
+   BADGES & LABELS
+   ============================================ */
+
+.badge {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold;
+}
+
+.badge-priority-high {
+  @apply bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300;
+}
+
+.badge-priority-medium {
+  @apply bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300;
+}
+
+.badge-priority-low {
+  @apply bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300;
+}
+
+.badge-category {
+  @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium;
+}
+
+.badge-category-work {
+  @apply bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300;
+}
+
+.badge-category-personal {
+  @apply bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300;
+}
+
+.badge-category-urgent {
+  @apply bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300;
+}
+
+.badge-category-ideas {
+  @apply bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300;
+}
+
+.badge-status {
+  @apply px-2.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wide;
+}
+
+.badge-status-completed {
+  @apply bg-accent-green text-white;
+}
+
+.badge-status-progress {
+  @apply bg-accent-orange text-white;
+}
+
+.badge-status-todo {
+  @apply bg-gray-500 text-white dark:bg-gray-600;
+}
+
+/* ============================================
+   NOTIFICATIONS & ALERTS
+   ============================================ */
+
+.notification-success {
+  @apply p-4 bg-green-50 border-l-4 border-accent-green text-green-800 rounded-lg shadow-md;
+  animation: slideInRight 0.5s ease-out;
+}
+
+.dark .notification-success {
+  @apply bg-green-900/20 text-green-300 border-green-500;
+}
+
+.notification-error {
+  @apply p-4 bg-red-50 border-l-4 border-accent-red text-red-800 rounded-lg shadow-md;
+  animation: slideInRight 0.5s ease-out;
+}
+
+.dark .notification-error {
+  @apply bg-red-900/20 text-red-300 border-red-500;
+}
+
+.notification-warning {
+  @apply p-4 bg-orange-50 border-l-4 border-accent-orange text-orange-800 rounded-lg shadow-md;
+  animation: slideInRight 0.5s ease-out;
+}
+
+.dark .notification-warning {
+  @apply bg-orange-900/20 text-orange-300 border-orange-500;
+}
+
+.notification-info {
+  @apply p-4 bg-blue-50 border-l-4 border-primary-500 text-blue-800 rounded-lg shadow-md;
+  animation: slideInRight 0.5s ease-out;
+}
+
+.dark .notification-info {
+  @apply bg-blue-900/20 text-blue-300 border-blue-500;
+}
+
+/* ============================================
+   CHECKBOX STYLES
+   ============================================ */
+
+.task-checkbox {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--gray-300);
+  border-radius: var(--radius-sm);
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: white;
+}
+
+.dark .task-checkbox {
+  background: var(--dark-surface);
+  border-color: var(--dark-border);
+}
+
+.task-checkbox:hover {
+  border-color: var(--primary-blue);
+  transform: scale(1.1);
+}
+
+.task-checkbox:checked {
+  background: var(--primary-blue);
+  border-color: var(--primary-blue);
+  animation: checkboxPop 0.3s ease;
+}
+
+.dark .task-checkbox:checked {
+  background: var(--primary-blue);
+}
+
+.task-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.task-checkbox:focus-visible {
+  outline: 2px solid var(--primary-blue);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   LOADING & PROGRESS INDICATORS
+   ============================================ */
+
+.loading-spinner {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(59, 130, 246, 0.2);
+  border-radius: 50%;
+  border-top-color: var(--primary-blue);
+  animation: spin 0.8s linear infinite;
+}
+
+.dark .loading-spinner {
+  border-color: rgba(96, 165, 250, 0.2);
+  border-top-color: var(--primary-blue);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--gray-200);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.dark .progress-bar {
+  background: var(--dark-border);
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-blue), var(--accent-purple));
+  border-radius: var(--radius-sm);
+  transition: width 0.3s ease;
+}
+
+.task-counter {
+  @apply inline-flex items-center px-3 py-1 bg-primary-500 text-white rounded-full text-sm font-semibold;
+}
+
+.dark .task-counter {
+  @apply bg-primary-400;
+}
+/* ============================================
+   DUE DATE INDICATORS
+   ============================================ */
+
+.due-date {
+  @apply inline-flex items-center gap-1 text-sm font-medium px-2 py-1 rounded;
+}
+
+.due-date-overdue {
+  @apply bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300;
+}
+
+.due-date-today {
+  @apply bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300;
+}
+
+.due-date-soon {
+  @apply bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300;
+}
+
+.due-date-future {
+  @apply text-gray-600 dark:text-dark-text-secondary;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.header-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 10px 30px -5px rgba(102, 126, 234, 0.3);
+}
+
+.dark .header-gradient {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+}
+
+/* Focus states for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--primary-blue);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-100);
+  border-radius: var(--radius-sm);
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: var(--dark-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray-300);
+  border-radius: var(--radius-sm);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--dark-border);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-400);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--dark-surface-hover);
+}
+
+/* Text utilities */
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Backdrop blur utilities */
+.backdrop-blur-glass {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Transition utilities */
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover lift effect */
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.dark .hover-lift:hover {
+  box-shadow: var(--shadow-dark-lg);
+}
+
+/* Empty state */
+.empty-state {
+  @apply text-center py-12 px-4;
+}
+
+.empty-state-icon {
+  @apply w-24 h-24 mx-auto mb-4 text-gray-400 dark:text-dark-text-muted;
+}
+
+.empty-state-title {
+  @apply text-2xl font-bold text-gray-700 dark:text-dark-text-primary mb-2;
+}
+
+.empty-state-description {
+  @apply text-gray-500 dark:text-dark-text-secondary max-w-md mx-auto;
+}
+
+/* Divider */
+.divider {
+  @apply border-t border-gray-200 dark:border-dark-border my-6;
+}
+
+/* Skeleton loader */
+.skeleton {
+  @apply bg-gray-200 dark:bg-dark-surface-hover animate-pulse rounded;
+}
+
+.skeleton-text {
+  @apply h-4 skeleton mb-2;
+}
+
+.skeleton-title {
+  @apply h-6 skeleton mb-3 w-3/4;
+}
+
+.skeleton-avatar {
+  @apply w-12 h-12 skeleton rounded-full;
+}
