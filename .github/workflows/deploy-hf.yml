@@ -1,0 +1,39 @@
+name: Deploy to Hugging Face Spaces
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'backend/**'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Push to Hugging Face Spaces
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          cd backend
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+
+          # Add Hugging Face remote
+          git remote add hf https://huggingface.co/spaces/${{ secrets.HF_SPACE_NAME }} || true
+
+          # Create a temporary branch with only backend files
+          git subtree split --prefix=backend -b hf-deploy
+
+          # Push to Hugging Face
+          git push https://user:$HF_TOKEN@huggingface.co/spaces/${{ secrets.HF_SPACE_NAME }} hf-deploy:main --force
+
+          # Clean up
+          git branch -D hf-deploy
