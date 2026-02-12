@@ -21,19 +21,16 @@ jobs:
       - name: Push to Hugging Face Spaces
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_SPACE_NAME: ${{ secrets.HF_SPACE_NAME }}
         run: |
-          cd backend
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
-
-          # Add Hugging Face remote
-          git remote add hf https://huggingface.co/spaces/${{ secrets.HF_SPACE_NAME }} || true
 
           # Create a temporary branch with only backend files
           git subtree split --prefix=backend -b hf-deploy
 
           # Push to Hugging Face
-          git push https://user:$HF_TOKEN@huggingface.co/spaces/${{ secrets.HF_SPACE_NAME }} hf-deploy:main --force
+          git push --force https://user:$HF_TOKEN@huggingface.co/spaces/$HF_SPACE_NAME hf-deploy:main
 
           # Clean up
           git branch -D hf-deploy
