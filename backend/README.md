@@ -1,3 +1,13 @@
+---
+title: Todo Backend API
+emoji: 📝
+colorFrom: blue
+colorTo: purple
+sdk: docker
+pinned: false
+license: mit
+---
+
 # Todo Backend API
 
 Production-ready FastAPI backend for Todo application with authentication and PostgreSQL database.
