@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { apiClient } from '@/lib/api';
+import { apiClient } from '../../../lib/api';
 import TaskForm from '@/components/TaskForm/TaskForm';
 import { TaskFormData } from '@/lib/types';
-import { isAuthenticatedClient, getCurrentUserId } from '@/lib/auth-utils';
+import { isAuthenticatedClient, getCurrentUserId } from '../../../lib/auth-utils';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar/Navbar';

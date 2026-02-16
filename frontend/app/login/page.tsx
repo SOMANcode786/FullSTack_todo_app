@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { mockLogin } from '@/lib/auth';
+import { mockLogin } from '../../lib/auth';
 import ThemeToggle from '@/components/ThemeToggle/ThemeToggle';
 
 export default function LoginPage() {
