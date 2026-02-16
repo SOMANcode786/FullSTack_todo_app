@@ -1,10 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { apiClient, Task } from '../../lib/api';
+import { apiClient, Task } from '@/lib/api';
 import TaskCard from '@/components/TaskCard/TaskCard';
 import Link from 'next/link';
-import { isAuthenticatedClient, getCurrentUserId } from '../../lib/auth-utils';
+import { isAuthenticatedClient, getCurrentUserId } from '@/lib/auth-utils';
 import Navbar from '@/components/Navbar/Navbar';
 import { ProgressBar, TaskCounter } from '@/components/Progress/Progress';
 

@@ -1,11 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { apiClient, Task } from '../../../lib/api';
+import { apiClient, Task } from '@/lib/api';
 import { useParams, useRouter } from 'next/navigation';
 import TaskForm from '@/components/TaskForm/TaskForm';
 import { TaskFormData } from '@/lib/types';
-import { isAuthenticatedClient, getCurrentUserId } from '../../../lib/auth-utils';
+import { isAuthenticatedClient, getCurrentUserId } from '@/lib/auth-utils';
 import Link from 'next/link';
 
 export default function TaskDetailPage() {
