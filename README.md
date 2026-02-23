@@ -16,8 +16,8 @@
 https://full-stack-todo-green.vercel.app  
 
 🔗 **Backend API:**  
-(Add your backend URL here)
 
+(https://huggingface.co/spaces/SomanAmir/todo_app)
 ---
 
 ## 🎥 Demo Preview
